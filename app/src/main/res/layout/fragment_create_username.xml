@@ -48,7 +48,7 @@
 
     <EditText
         android:id="@+id/etNewUsername"
-        style="@style/AuthEditTextStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="17dp"
@@ -69,7 +69,7 @@
 
     <EditText
         android:id="@+id/etEmail"
-        style="@style/AuthEditTextStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="17dp"

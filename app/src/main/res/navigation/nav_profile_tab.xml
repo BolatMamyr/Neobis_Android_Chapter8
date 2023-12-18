@@ -5,11 +5,43 @@
     android:id="@+id/nav_profile_tab"
     app:startDestination="@id/profileFragment">
 
-    <action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.mobimarket.ui.logged_in.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_finishRegistrationFragment"
+            app:destination="@id/finishRegistrationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_likedProdsFragment"
+            app:destination="@id/likedProdsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myProdsFragment"
+            app:destination="@id/myProdsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/likedProdsFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.LikedProdsFragment"
+        android:label="fragment_liked_prods"
+        tools:layout="@layout/fragment_liked_prods" />
+    <fragment
+        android:id="@+id/myProdsFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.MyProdsFragment"
+        android:label="fragment_my_prods"
+        tools:layout="@layout/fragment_my_prods" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/finishRegistrationFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.FinishRegistrationFragment"
+        android:label="fragment_finish_registration"
+        tools:layout="@layout/fragment_finish_registration" />
 </navigation>

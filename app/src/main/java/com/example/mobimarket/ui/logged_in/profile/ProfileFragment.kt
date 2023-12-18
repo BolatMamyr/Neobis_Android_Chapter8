@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentProfileBinding
+import com.example.mobimarket.util.navigate
 
 class ProfileFragment : Fragment() {
 
@@ -25,10 +26,29 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setToolbar()
+        setOnClickListeners()
+    }
+
+    private fun setToolbar() {
         binding.tbProfile.tvToolbarTitle.text = getString(R.string.profile)
         binding.tbProfile.btnMenuText.isVisible = true
         binding.tbProfile.tvMenu.text = getString(R.string.edit_short)
+    }
 
+    private fun setOnClickListeners() {
+        binding.tbProfile.btnMenuText.setOnClickListener {
+            navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+        binding.btnLiked.setOnClickListener {
+            navigate(R.id.action_profileFragment_to_likedProdsFragment)
+        }
+        binding.btnMyProds.setOnClickListener {
+            navigate(R.id.action_profileFragment_to_myProdsFragment)
+        }
+        binding.btnFinishReg.setOnClickListener {
+            navigate(R.id.action_profileFragment_to_finishRegistrationFragment)
+        }
     }
 
 }

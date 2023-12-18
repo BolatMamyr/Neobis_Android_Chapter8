@@ -26,4 +26,12 @@
     <string name="my_products">Мои товары</string>
     <string name="sign_out">Выйти</string>
     <string name="edit_short">Изм.</string>
+    <string name="choose_photo">Выбрать фотографию</string>
+    <string name="name">Имя</string>
+    <string name="lastname">Фамилия</string>
+    <string name="birthdate">Дата рождения</string>
+    <string name="add_number">Добавить номер</string>
+    <string name="enter_phone_number">Введите номер телефона</string>
+    <string name="send_sms_desc">Мы отправим вам СМС с кодом подтверждения</string>
+    <string name="phone_is_registered">Данный номер уже зарегистрирован</string>
 </resources>

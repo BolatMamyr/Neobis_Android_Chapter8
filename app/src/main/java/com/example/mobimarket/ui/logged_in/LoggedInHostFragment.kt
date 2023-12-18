@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -28,7 +29,6 @@ class LoggedInHostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.bottomNav.background = null
         binding.bottomNav.menu.getItem(2).isEnabled = false
 
         // set corner radius for BottomAppBar
@@ -44,6 +44,20 @@ class LoggedInHostFragment : Fragment() {
         val navController = navHostFragment.navController
         // todo: check both navController and findNavController()
         binding.bottomNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.mainFragment, R.id.walletFragment, R.id.chatsFragment, R.id.profileFragment -> {
+                    showBottomNav(true)
+                }
+                else -> showBottomNav(false)
+            }
+        }
+    }
+
+    private fun showBottomNav(value: Boolean) {
+        binding.bottomAppBar.isVisible = value
+        binding.fab.isVisible = value
     }
 
 }
