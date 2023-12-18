@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_logged_in"
+    app:startDestination="@id/nav_main_tab">
+
+    <include app:graph="@navigation/nav_main_tab" />
+    <include app:graph="@navigation/nav_wallet_tab" />
+    <include app:graph="@navigation/nav_chats_tab" />
+    <include app:graph="@navigation/nav_profile_tab" />
+</navigation>
