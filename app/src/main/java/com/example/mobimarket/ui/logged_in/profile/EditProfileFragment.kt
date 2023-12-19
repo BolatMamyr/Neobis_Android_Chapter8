@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentEditProfileBinding
+import com.example.mobimarket.util.navigate
 import com.example.mobimarket.util.navigateUp
 
 class EditProfileFragment : Fragment() {
@@ -27,7 +28,9 @@ class EditProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setToolbar()
-
+        binding.containerAddNumber.setOnClickListener {
+            navigate(R.id.action_editProfileFragment_to_enterPhoneFragment)
+        }
     }
 
     private fun setToolbar() {
@@ -39,4 +42,8 @@ class EditProfileFragment : Fragment() {
         binding.tbEditProfile.btnBackText.setOnClickListener { navigateUp() }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

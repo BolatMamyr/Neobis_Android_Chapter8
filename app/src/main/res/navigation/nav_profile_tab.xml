@@ -38,10 +38,28 @@
         android:id="@+id/editProfileFragment"
         android:name="com.example.mobimarket.ui.logged_in.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_enterPhoneFragment"
+            app:destination="@id/enterPhoneFragment" />
+    </fragment>
     <fragment
         android:id="@+id/finishRegistrationFragment"
         android:name="com.example.mobimarket.ui.logged_in.profile.FinishRegistrationFragment"
         android:label="fragment_finish_registration"
         tools:layout="@layout/fragment_finish_registration" />
+    <fragment
+        android:id="@+id/enterPhoneFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.EnterPhoneFragment"
+        android:label="fragment_enter_phone"
+        tools:layout="@layout/fragment_enter_phone" >
+        <action
+            android:id="@+id/action_enterPhoneFragment_to_enterSmsFragment"
+            app:destination="@id/enterSmsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterSmsFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.EnterSmsFragment"
+        android:label="fragment_enter_sms"
+        tools:layout="@layout/fragment_enter_sms" />
 </navigation>

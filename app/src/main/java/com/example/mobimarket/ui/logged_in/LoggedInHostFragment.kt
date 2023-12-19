@@ -60,4 +60,8 @@ class LoggedInHostFragment : Fragment() {
         binding.fab.isVisible = value
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

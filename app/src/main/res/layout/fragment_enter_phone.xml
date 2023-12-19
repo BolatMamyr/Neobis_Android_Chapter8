@@ -57,8 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0(000) 000 000"
+            android:gravity="end"
             android:textColor="@color/grey"
             android:textSize="28sp"
+            android:fontFamily="@font/gothampro_bold"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -69,8 +72,10 @@
             android:layout_gravity="center_horizontal"
             android:background="@null"
             android:textSize="28sp"
+            android:fontFamily="@font/gothampro_bold"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvPhoneHint"
-            tools:text="0( " />
+            tools:text="7( " />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView

@@ -67,4 +67,8 @@ class SignInFragment : Fragment() {
         navigate(R.id.action_signInFragment_to_loggedInHostFragment)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

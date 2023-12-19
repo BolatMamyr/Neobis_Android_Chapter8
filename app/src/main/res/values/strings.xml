@@ -34,4 +34,8 @@
     <string name="enter_phone_number">Введите номер телефона</string>
     <string name="send_sms_desc">Мы отправим вам СМС с кодом подтверждения</string>
     <string name="phone_is_registered">Данный номер уже зарегистрирован</string>
+    <string name="enter_sms_code">Введите код из СМС</string>
+    <string name="repeat_request_in">Повторный запрос</string>
+    <string name="resend_code">Отправить код еще раз</string>
+    <string name="wrong_code">Неверный код</string>
 </resources>
