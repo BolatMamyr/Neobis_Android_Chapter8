@@ -41,3 +41,9 @@ fun Fragment.showErrorMessage(text: String) {
             show()
         }
 }
+
+fun Int.addZero(): String {
+    if (this < 10) return "0$this"
+
+    return "$this"
+}

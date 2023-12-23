@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.logged_in.product.ProductInfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpInfoImages"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/black2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnInfoBack"
+            android:layout_width="44dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/light_grey"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvInfoPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/maine_blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vpInfoImages"
+            tools:text="23 000 $" />
+
+        <ImageView
+            android:id="@+id/btnInfoLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="11.42dp"
+            android:src="@drawable/ic_heart_grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoPrice" />
+
+        <TextView
+            android:id="@+id/tvInfoLikesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btnInfoLike"
+            app:layout_constraintStart_toEndOf="@id/btnInfoLike"
+            app:layout_constraintTop_toTopOf="@id/btnInfoLike"
+            tools:text="Нравится: 1 M" />
+
+        <TextView
+            android:id="@+id/tvInfoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/gothampro_bold"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/btnInfoLike"
+            tools:text="BMW M4 Coupe: A Two-Door" />
+
+        <TextView
+            android:id="@+id/tvInfoOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoName"
+            tools:text="@string/product_overview_example" />
+
+        <TextView
+            android:id="@+id/tvInfoDescTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="14dp"
+            android:text="@string/detailed_description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoOverview" />
+
+        <TextView
+            android:id="@+id/tvInfoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoDescTitle"
+            tools:text="@string/description_example" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

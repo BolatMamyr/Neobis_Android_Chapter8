@@ -54,5 +54,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.github.arefbhrn:MaskedEditText:1.0.0")
 
 }
