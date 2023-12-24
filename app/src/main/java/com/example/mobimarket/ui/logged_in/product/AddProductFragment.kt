@@ -78,6 +78,7 @@ class AddProductFragment : Fragment() {
             setNegativeButtonText(getString(R.string.no))
 
             setPositiveButton {
+                dismiss()
                 navigateUp()
             }
             setNegativeButton {

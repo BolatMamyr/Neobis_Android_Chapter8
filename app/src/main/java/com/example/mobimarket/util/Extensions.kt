@@ -18,9 +18,11 @@ fun Fragment.navigate(navDirections: NavDirections) =
 
 fun Fragment.navigateUp() = this.findNavController().navigateUp()
 
-inline fun Fragment.showAlert(func: MyAlertDialog.() -> Unit) {
-    MyAlertDialog(this.requireContext())
-}
+inline fun Fragment.showAlert(func: MyAlertDialog.() -> Unit) =
+    MyAlertDialog(this.requireContext()).apply {
+        func()
+    }.create()
+
 
 fun Button.enable(value: Boolean) {
     isEnabled = value
