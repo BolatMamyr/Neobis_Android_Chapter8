@@ -46,6 +46,11 @@ class CreateUsernameFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun validate(username: String, email: String) {
         if (ValidationUtils.isEmailValid(email)) {
             navigate(R.id.action_createUsernameFragment_to_createPasswordFragment)
@@ -65,10 +70,5 @@ class CreateUsernameFragment : Fragment() {
                 binding.btnCreateUsernameFurther.enable(false)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

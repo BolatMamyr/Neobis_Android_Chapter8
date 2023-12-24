@@ -42,4 +42,12 @@
     <string name="detailed_description">Детальное описание</string>
     <string name="description_example" translatable="false">Безусловным лидером является BMW M4 CSL с впечатляющей мощностью в 551 л.с. и с 650 Нм крутящего момента. Уменьшение веса до 100 кг по сравнению с BMW M4 Competition Coupé, высокопроизводительный 6-цилиндровый рядный бензиновый двигатель M TwinPower Turbo и специально подобранные шины Ultra Track позволяют ощутить бескомпромиссную ДНК автоспорта в повседневной жизни.</string>
     <string name="product_overview_example">Безусловным лидером является BMW M4 CSL с впечатляющей мощностью в 551 л.с. и с 650 Нм крутящего момента.</string>
+    <string name="name2">Название</string>
+    <string name="short_desc">Краткое описание</string>
+    <string name="add_photo">Добавить фото</string>
+    <string name="cancel_adding_product_alert">Вы действительно хотите отменить добавление товара?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="price">Цена</string>
+    <string name="finish_reg">Закончить регистрацию</string>
 </resources>

@@ -11,13 +11,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mobimarket.R
-import com.example.mobimarket.databinding.FragmentCreatePasswordBinding
 import com.example.mobimarket.databinding.FragmentRepeatPasswordBinding
-import com.example.mobimarket.util.ValidationUtils
 import com.example.mobimarket.util.enable
-import com.example.mobimarket.util.navigate
 import com.example.mobimarket.util.navigateUp
-import com.example.mobimarket.util.showErrorMessage
 
 class RepeatPasswordFragment : Fragment() {
 
@@ -46,6 +42,11 @@ class RepeatPasswordFragment : Fragment() {
 
         setOnClickListeners()
         addTextChangedListener()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setToolbar() {
@@ -103,10 +104,5 @@ class RepeatPasswordFragment : Fragment() {
                 binding.btnCreatePassword.enable(false)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

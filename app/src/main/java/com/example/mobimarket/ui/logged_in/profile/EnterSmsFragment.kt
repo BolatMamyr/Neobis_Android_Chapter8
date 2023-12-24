@@ -1,5 +1,6 @@
 package com.example.mobimarket.ui.logged_in.profile
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -25,6 +26,7 @@ class EnterSmsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val timer = object : CountDownTimer(5000, 1000) {
+        @SuppressLint("SetTextI18n")
         override fun onTick(millisUntilFinished: Long) {
             val sec = millisUntilFinished / 1000 + 1
             binding.tvTimer.text = "00:${sec.toInt().addZero()}"
@@ -48,6 +50,11 @@ class EnterSmsFragment : Fragment() {
         binding.etEnterCode.requestFocus()
         setOnClickListeners()
         addTextChangedListener()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setOnClickListeners() {

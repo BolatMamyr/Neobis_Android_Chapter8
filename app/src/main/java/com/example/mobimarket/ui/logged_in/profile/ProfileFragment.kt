@@ -30,6 +30,11 @@ class ProfileFragment : Fragment() {
         setOnClickListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setToolbar() {
         binding.tbProfile.tvToolbarTitle.text = getString(R.string.profile)
         binding.tbProfile.btnMenuText.isVisible = true
@@ -49,10 +54,5 @@ class ProfileFragment : Fragment() {
         binding.btnFinishReg.setOnClickListener {
             navigate(R.id.action_profileFragment_to_finishRegistrationFragment)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

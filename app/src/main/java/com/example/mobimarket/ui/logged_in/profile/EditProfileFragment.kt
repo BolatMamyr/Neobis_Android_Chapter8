@@ -45,6 +45,11 @@ class EditProfileFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setOnClickListeners() {
         binding.btnChoosePhoto.setOnClickListener {
             galleryLauncher.launch("image/*")
@@ -70,10 +75,5 @@ class EditProfileFragment : Fragment() {
         binding.tbEditProfile.tvMenu.text = getString(R.string.done)
 
         binding.tbEditProfile.btnBackText.setOnClickListener { navigateUp() }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

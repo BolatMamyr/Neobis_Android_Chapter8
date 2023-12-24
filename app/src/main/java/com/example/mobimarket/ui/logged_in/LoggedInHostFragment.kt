@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentLoggedInHostBinding
@@ -31,18 +30,20 @@ class LoggedInHostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.bottomNav.menu.getItem(2).isEnabled = false
 
-        // set corner radius for BottomAppBar
-        val background = binding.bottomAppBar.background as MaterialShapeDrawable
-        background.shapeAppearanceModel = background.shapeAppearanceModel
-            .toBuilder()
-            .setTopRightCorner(CornerFamily.ROUNDED, 40f)
-            .setTopLeftCorner(CornerFamily.ROUNDED, 40f)
-            .build()
+        setBottomNavCornerRadius()
+        setUpNavController()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setUpNavController() {
         val navHostFragment =
             childFragmentManager.findFragmentById(R.id.loggedInHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
-        // todo: check both navController and findNavController()
+
         binding.bottomNav.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -50,18 +51,27 @@ class LoggedInHostFragment : Fragment() {
                 R.id.mainFragment, R.id.walletFragment, R.id.chatsFragment, R.id.profileFragment -> {
                     showBottomNav(true)
                 }
+
                 else -> showBottomNav(false)
             }
         }
+
+        binding.btnAddProduct.setOnClickListener {
+            navController.navigate(R.id.action_global_addProductFragment)
+        }
+    }
+
+    private fun setBottomNavCornerRadius() {
+        val background = binding.bottomAppBar.background as MaterialShapeDrawable
+        background.shapeAppearanceModel = background.shapeAppearanceModel
+            .toBuilder()
+            .setTopRightCorner(CornerFamily.ROUNDED, 40f)
+            .setTopLeftCorner(CornerFamily.ROUNDED, 40f)
+            .build()
     }
 
     private fun showBottomNav(value: Boolean) {
         binding.bottomAppBar.isVisible = value
-        binding.fab.isVisible = value
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.btnAddProduct.isVisible = value
     }
 }

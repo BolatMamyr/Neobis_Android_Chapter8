@@ -32,6 +32,11 @@ class EnterPhoneFragment : Fragment() {
         addTextChangedListener()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun addTextChangedListener() {
         binding.etPhone.addTextChangedListener {
             val length = binding.etPhone.rawText.length

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:paddingBottom="50dp"
+    tools:context=".ui.logged_in.product.AddProductFragment">
+
+    <include
+        android:id="@+id/tbAddProd"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAddImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etPrice"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/bg_text"
+                android:backgroundTint="@color/white"
+                android:hint="@string/price"
+                android:inputType="number"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10.5dp"
+                app:layout_constraintTop_toBottomOf="@id/rvAddImages"
+                tools:text="23 000 $" />
+
+            <EditText
+                android:id="@+id/etName"
+                style="@style/MultiLineEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_text"
+                android:backgroundTint="@color/white"
+                android:hint="@string/name2"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10.5dp"
+                app:layout_constraintTop_toBottomOf="@id/etPrice"
+                tools:text="BMW M4 Coupe: A Two-Door" />
+
+            <EditText
+                android:id="@+id/etOverview"
+                style="@style/MultiLineEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_text"
+                android:backgroundTint="@color/white"
+                android:hint="@string/short_desc"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10.5dp"
+                app:layout_constraintTop_toBottomOf="@id/etName"
+                tools:text="@string/product_overview_example" />
+
+            <EditText
+                android:id="@+id/etDesc"
+                style="@style/MultiLineEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_text"
+                android:backgroundTint="@color/white"
+                android:hint="@string/short_desc"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10.5dp"
+                app:layout_constraintTop_toBottomOf="@id/etOverview"
+                tools:text="@string/description_example" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</LinearLayout>

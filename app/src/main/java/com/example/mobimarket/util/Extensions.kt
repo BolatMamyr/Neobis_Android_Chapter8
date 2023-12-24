@@ -8,13 +8,19 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.navigateUp
 import com.example.mobimarket.R
+import com.example.mobimarket.ui.other.MyAlertDialog
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.navigate(resId: Int) = this.findNavController().navigate(resId)
-fun Fragment.navigate(navDirections: NavDirections) = this.findNavController().navigate(navDirections)
+fun Fragment.navigate(navDirections: NavDirections) =
+    this.findNavController().navigate(navDirections)
+
 fun Fragment.navigateUp() = this.findNavController().navigateUp()
+
+inline fun Fragment.showAlert(func: MyAlertDialog.() -> Unit) {
+    MyAlertDialog(this.requireContext())
+}
 
 fun Button.enable(value: Boolean) {
     isEnabled = value
@@ -27,19 +33,19 @@ fun Button.enable(value: Boolean) {
 }
 
 fun Fragment.showErrorMessage(text: String) {
-        val errorView = layoutInflater.inflate(R.layout.sign_in_error, null)
-        val errorTextView = errorView.findViewById<TextView>(R.id.tvErrorMessage)
-        errorTextView.text = text
-        Snackbar.make(requireView(), "", Snackbar.LENGTH_LONG).apply {
-            view.setBackgroundColor(Color.TRANSPARENT)
-            val snackbarLayout = this.view as Snackbar.SnackbarLayout
-            snackbarLayout.addView(errorView)
+    val errorView = layoutInflater.inflate(R.layout.sign_in_error, null)
+    val errorTextView = errorView.findViewById<TextView>(R.id.tvErrorMessage)
+    errorTextView.text = text
+    Snackbar.make(requireView(), "", Snackbar.LENGTH_LONG).apply {
+        view.setBackgroundColor(Color.TRANSPARENT)
+        val snackbarLayout = this.view as Snackbar.SnackbarLayout
+        snackbarLayout.addView(errorView)
 
-            val layoutParams = view.layoutParams as FrameLayout.LayoutParams
-            layoutParams.gravity = Gravity.TOP
-            view.layoutParams = layoutParams
-            show()
-        }
+        val layoutParams = view.layoutParams as FrameLayout.LayoutParams
+        layoutParams.gravity = Gravity.TOP
+        view.layoutParams = layoutParams
+        show()
+    }
 }
 
 fun Int.addZero(): String {

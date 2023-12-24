@@ -42,6 +42,11 @@ class CreatePasswordFragment : Fragment() {
         setOnClickListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setToolbar() {
         binding.tbCreatePassword.btnBack.setOnClickListener { navigateUp() }
         binding.tbCreatePassword.tvToolbarTitle.text = getString(R.string.registration)
@@ -93,10 +98,5 @@ class CreatePasswordFragment : Fragment() {
                 binding.btnCreatePassword.enable(false)
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

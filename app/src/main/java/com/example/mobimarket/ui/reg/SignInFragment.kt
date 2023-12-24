@@ -1,23 +1,16 @@
 package com.example.mobimarket.ui.reg
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentSignInBinding
 import com.example.mobimarket.util.enable
 import com.example.mobimarket.util.navigate
-import com.example.mobimarket.util.showErrorMessage
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.snackbar.Snackbar.SnackbarLayout
 
 class SignInFragment : Fragment() {
 
@@ -38,6 +31,11 @@ class SignInFragment : Fragment() {
         addTextChangedListener(binding.pvPassword.getEditText())
 
         setButtonClickListeners()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setButtonClickListeners() {
@@ -65,10 +63,5 @@ class SignInFragment : Fragment() {
     private fun signIn() {
 //        showErrorMessage(getString(R.string.wrong_login_or_password))
         navigate(R.id.action_signInFragment_to_loggedInHostFragment)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
