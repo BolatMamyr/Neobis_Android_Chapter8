@@ -1,4 +1,4 @@
-package com.example.mobimarket.ui.logged_in.profile
+package com.example.mobimarket.ui.logged_in.profile.my_prods
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mobimarket.R
-import com.example.mobimarket.databinding.FragmentLikedProdsBinding
+import com.example.mobimarket.databinding.FragmentMyProdsBinding
 import com.example.mobimarket.models.ProductImage
 import com.example.mobimarket.models.ProductMini
 import com.example.mobimarket.ui.logged_in.product.rv.ItemDecorator
 import com.example.mobimarket.ui.logged_in.product.rv.ProductsAdapter
 import com.example.mobimarket.util.navigateUp
 
-class LikedProdsFragment : Fragment() {
+class MyProdsFragment : Fragment() {
 
-    private var _binding: FragmentLikedProdsBinding? = null
+    private var _binding: FragmentMyProdsBinding? = null
     private val binding get() = _binding!!
 
     private val mAdapter = ProductsAdapter()
@@ -26,7 +26,7 @@ class LikedProdsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLikedProdsBinding.inflate(layoutInflater)
+        _binding = FragmentMyProdsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -38,14 +38,14 @@ class LikedProdsFragment : Fragment() {
     }
 
     private fun showNothingToShow() {
-        binding.rvLikedProds.isVisible = false
+        binding.rvMyProds.isVisible = false
         binding.ivEmpty.isVisible = true
         binding.tvEmpty.isVisible = true
     }
 
     private fun setUpToolbar() {
-        binding.tbLikedProds.apply {
-            tvToolbarTitle.text = getString(R.string.liked)
+        binding.tbMyProds.apply {
+            tvToolbarTitle.text = getString(R.string.my_products)
             btnBack.isVisible = true
             btnBack.setOnClickListener { navigateUp() }
         }
@@ -66,7 +66,7 @@ class LikedProdsFragment : Fragment() {
     }
 
     private fun setRV() {
-        binding.rvLikedProds.apply {
+        binding.rvMyProds.apply {
             adapter = mAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             val x = (resources.displayMetrics.density * 4).toInt()

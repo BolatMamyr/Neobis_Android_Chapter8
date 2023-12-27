@@ -50,4 +50,5 @@
     <string name="no">Нет</string>
     <string name="price">Цена</string>
     <string name="finish_reg">Закончить регистрацию</string>
+    <string name="sign_out_alert">Вы действительно хотите выйти с приложения?</string>
 </resources>

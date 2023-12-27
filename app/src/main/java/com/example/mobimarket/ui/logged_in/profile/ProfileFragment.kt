@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentProfileBinding
 import com.example.mobimarket.util.navigate
+import com.example.mobimarket.util.showAlert
 
 class ProfileFragment : Fragment() {
 
@@ -52,7 +53,21 @@ class ProfileFragment : Fragment() {
             navigate(R.id.action_profileFragment_to_myProdsFragment)
         }
         binding.btnFinishReg.setOnClickListener {
-            navigate(R.id.action_profileFragment_to_finishRegistrationFragment)
+            navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+        binding.btnSignOut.setOnClickListener {
+            showAlert {
+                setImage(R.drawable.ic_sign_out_red)
+                setTitle(getString(R.string.sign_out_alert))
+                setPositiveButtonText(getString(R.string.sign_out))
+                setNegativeButtonText(getString(R.string.cancel))
+
+                setPositiveButton {
+                    // todo: logout
+                    dismiss()
+                }
+                setNegativeButton { dismiss() }
+            }
         }
     }
 }

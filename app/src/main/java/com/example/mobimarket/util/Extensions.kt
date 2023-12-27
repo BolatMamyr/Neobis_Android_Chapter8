@@ -21,6 +21,7 @@ fun Fragment.navigateUp() = this.findNavController().navigateUp()
 inline fun Fragment.showAlert(func: MyAlertDialog.() -> Unit) =
     MyAlertDialog(this.requireContext()).apply {
         func()
+        show()
     }.create()
 
 

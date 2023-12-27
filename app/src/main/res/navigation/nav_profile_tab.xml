@@ -31,7 +31,7 @@
         tools:layout="@layout/fragment_liked_prods" />
     <fragment
         android:id="@+id/myProdsFragment"
-        android:name="com.example.mobimarket.ui.logged_in.profile.MyProdsFragment"
+        android:name="com.example.mobimarket.ui.logged_in.profile.my_prods.MyProdsFragment"
         android:label="fragment_my_prods"
         tools:layout="@layout/fragment_my_prods" />
     <fragment

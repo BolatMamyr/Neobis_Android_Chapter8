@@ -1,10 +1,14 @@
 package com.example.mobimarket.ui.logged_in
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -71,7 +75,36 @@ class LoggedInHostFragment : Fragment() {
     }
 
     private fun showBottomNav(value: Boolean) {
-        binding.bottomAppBar.isVisible = value
-        binding.btnAddProduct.isVisible = value
+        if (value) {
+            binding.bottomAppBar.animate()
+                .translationY(0f)
+                .setInterpolator(DecelerateInterpolator(2f))
+                .setListener(null)
+            binding.bottomAppBar.isVisible = true
+
+            binding.btnAddProduct.animate()
+                .translationY(0f)
+                .setInterpolator(DecelerateInterpolator(2f))
+                .setListener(null)
+            binding.btnAddProduct.isVisible = true
+        } else {
+            binding.bottomAppBar.animate()
+                .translationY(binding.bottomAppBar.height.toFloat() + 300)
+                .setInterpolator(AccelerateInterpolator(2f))
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.bottomAppBar.isVisible = false
+                    }
+                })
+
+            binding.btnAddProduct.animate()
+                .translationY(binding.btnAddProduct.height.toFloat() + 300)
+                .setInterpolator(AccelerateInterpolator(2f))
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.btnAddProduct.isVisible = false
+                    }
+                })
+        }
     }
 }

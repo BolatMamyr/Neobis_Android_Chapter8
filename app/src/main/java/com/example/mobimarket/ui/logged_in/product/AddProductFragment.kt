@@ -84,8 +84,6 @@ class AddProductFragment : Fragment() {
             setNegativeButton {
                 dismiss()
             }
-
-            show()
         }
     }
 

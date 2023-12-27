@@ -22,7 +22,8 @@ class SplashScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // todo: if user exists navigate to loggedInFra else signinfrag
-        val action = R.id.action_splashScreenFragment_to_loggedInHostFragment
+//        val action = R.id.action_splashScreenFragment_to_loggedInHostFragment
+        val action = R.id.action_splashScreenFragment_to_signInFragment
         Handler(Looper.getMainLooper()).postDelayed({
             navigate(action)
         }, 2000)

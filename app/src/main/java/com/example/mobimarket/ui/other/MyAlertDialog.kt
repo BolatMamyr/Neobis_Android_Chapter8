@@ -2,6 +2,8 @@ package com.example.mobimarket.ui.other
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import com.example.mobimarket.databinding.AlertDialogBinding
 
@@ -12,6 +14,7 @@ class MyAlertDialog(context: Context) : AlertDialog(context) {
     init {
         binding = AlertDialogBinding.inflate(LayoutInflater.from(context))
         setView(binding?.root)
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
     fun setImage(img: Int) {
