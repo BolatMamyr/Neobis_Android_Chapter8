@@ -6,16 +6,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentSignInBinding
+import com.example.mobimarket.managers.UserManager
+import com.example.mobimarket.models.ApiState
+import com.example.mobimarket.models.reg.SignInRequestBody
 import com.example.mobimarket.util.enable
 import com.example.mobimarket.util.navigate
+import com.example.mobimarket.util.showErrorMessage
+import com.example.mobimarket.util.showSuccessMessage
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel by viewModels<RegistrationViewModel>()
+
+    @Inject
+    lateinit var userManager: UserManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +51,7 @@ class SignInFragment : Fragment() {
         addTextChangedListener(binding.pvPassword.getEditText())
 
         setButtonClickListeners()
+        collectSignInState()
     }
 
     override fun onDestroyView() {
@@ -61,7 +82,42 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn() {
-//        showErrorMessage(getString(R.string.wrong_login_or_password))
-        navigate(R.id.action_signInFragment_to_loggedInHostFragment)
+        val username = binding.etUsername.text.toString()
+        val password = binding.pvPassword.getText()
+        val body = SignInRequestBody(username = username, password = password)
+        viewModel.signIn(body)
+    }
+
+    private fun collectSignInState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.signInState.collectLatest {
+                when (it) {
+                    ApiState.Loading -> showProgressBar(true)
+                    is ApiState.Success -> {
+                        showProgressBar(false)
+                        showSuccessMessage(getString(R.string.successfully_signed_in))
+
+                        // todo:
+                        // NullPointerException: Attempt to invoke virtual method 'java.lang.String com.example.mobimarket.models.reg.SignInResponse.getAccessToken()' on a null object reference
+                        // at com.example.mobimarket.ui.reg.SignInFragment$collectSignInState$1$1.invokeSuspend(SignInFragment.kt:103)
+                        val accessToken = it.data.accessToken ?: ""
+                        val refreshToken = it.data.refreshToken ?: ""
+
+                        userManager.saveTokens(accessToken, refreshToken)
+
+                        navigate(R.id.action_signInFragment_to_loggedInHostFragment)
+                    }
+                    is ApiState.Error -> {
+                        showProgressBar(false)
+                        showErrorMessage(getString(R.string.wrong_login_or_password))
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showProgressBar(value: Boolean) {
+        binding.btnSignIn.isInvisible = value
+        binding.pbSignIn.isVisible = value
     }
 }

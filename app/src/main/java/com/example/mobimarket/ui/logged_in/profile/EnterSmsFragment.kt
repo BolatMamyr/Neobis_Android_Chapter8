@@ -1,14 +1,12 @@
 package com.example.mobimarket.ui.logged_in.profile
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -17,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentEnterSmsBinding
 import com.example.mobimarket.util.addZero
+import com.example.mobimarket.util.hideKeyboard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -93,10 +92,7 @@ class EnterSmsFragment : Fragment() {
 
             val length = binding.etEnterCode.rawText.length
             if (length > 3) {
-                val inputManager =
-                    requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputManager.hideSoftInputFromWindow(binding.etEnterCode.windowToken, 0)
-
+                hideKeyboard(binding.etEnterCode.windowToken)
                 checkCode(binding.etEnterCode.rawText)
             }
         }

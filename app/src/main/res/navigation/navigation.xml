@@ -10,14 +10,6 @@
         android:name="com.example.mobimarket.SplashScreenFragment"
         android:label="SplashScreenFragment">
         <action
-            android:id="@+id/action_splashScreenFragment_to_nav_reg"
-            app:destination="@id/nav_reg"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/splashScreenFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_splashScreenFragment_to_loggedInHostFragment"
             app:destination="@id/loggedInHostFragment"
             app:enterAnim="@android:anim/fade_in"
@@ -68,6 +60,12 @@
         android:name="com.example.mobimarket.ui.reg.CreatePasswordFragment"
         android:label="fragment_create_password"
         tools:layout="@layout/fragment_create_password">
+        <argument
+            android:name="username"
+            app:argType="string"/>
+        <argument
+            android:name="email"
+            app:argType="string"/>
         <action
             android:id="@+id/action_createPasswordFragment_to_repeatPasswordFragment"
             app:destination="@id/repeatPasswordFragment"
@@ -81,7 +79,11 @@
         android:name="com.example.mobimarket.ui.reg.RepeatPasswordFragment"
         android:label="RepeatPasswordFragment">
         <argument
-            android:name="password"
+            android:name="username"
+            app:argType="string" />
+        <argument android:name="email"
+            app:argType="string" />
+        <argument android:name="password"
             app:argType="string" />
     </fragment>
 

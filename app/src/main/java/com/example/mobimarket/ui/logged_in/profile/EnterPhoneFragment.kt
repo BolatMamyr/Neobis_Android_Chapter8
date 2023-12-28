@@ -1,15 +1,14 @@
 package com.example.mobimarket.ui.logged_in.profile
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentEnterPhoneBinding
+import com.example.mobimarket.util.hideKeyboard
 import com.example.mobimarket.util.navigate
 
 class EnterPhoneFragment : Fragment() {
@@ -42,9 +41,7 @@ class EnterPhoneFragment : Fragment() {
             val length = binding.etPhone.rawText.length
             enableButton(length > 10)
             if (length > 10) {
-                val inputManager =
-                    requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputManager.hideSoftInputFromWindow(binding.etPhone.windowToken, 0)
+                hideKeyboard(binding.etPhone.windowToken)
             }
         }
     }

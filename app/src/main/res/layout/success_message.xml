@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="16dp"
+    android:backgroundTint="@color/green"
+    android:id="@+id/successMessage">
+
+    <TextView
+        android:id="@+id/tvSuccessMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Товар добавлен"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:drawablePadding="4.5dp"
+        android:paddingVertical="22.5dp"
+        android:paddingHorizontal="26.5dp"
+        app:drawableStartCompat="@drawable/ic_success" />
+</androidx.cardview.widget.CardView>

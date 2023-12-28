@@ -53,7 +53,12 @@ class CreateUsernameFragment : Fragment() {
 
     private fun validate(username: String, email: String) {
         if (ValidationUtils.isEmailValid(email)) {
-            navigate(R.id.action_createUsernameFragment_to_createPasswordFragment)
+            val action =
+                CreateUsernameFragmentDirections.actionCreateUsernameFragmentToCreatePasswordFragment(
+                    username = username,
+                    email = email
+                )
+            navigate(action)
         } else {
             showErrorMessage(getString(R.string.invalid_email_format))
         }

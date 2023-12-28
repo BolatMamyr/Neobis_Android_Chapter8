@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.navArgs
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentCreatePasswordBinding
 import com.example.mobimarket.util.ValidationUtils
@@ -23,6 +23,9 @@ class CreatePasswordFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var isPasswordHidden = true
+
+    private val args by navArgs<CreatePasswordFragmentArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +36,6 @@ class CreatePasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setToolbar()
 
         binding.etCreatePassword.requestFocus()
@@ -60,7 +62,11 @@ class CreatePasswordFragment : Fragment() {
             val password = binding.etCreatePassword.text.toString()
             if (ValidationUtils.isPasswordCorrect(password)) {
                 val action = CreatePasswordFragmentDirections
-                    .actionCreatePasswordFragmentToRepeatPasswordFragment(password)
+                    .actionCreatePasswordFragmentToRepeatPasswordFragment(
+                        username = args.username,
+                        email = args.email,
+                        password = password
+                    )
                 navigate(action)
             } else {
                 showErrorMessage(getString(R.string.password_error))

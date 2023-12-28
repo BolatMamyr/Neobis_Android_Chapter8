@@ -51,4 +51,6 @@
     <string name="price">Цена</string>
     <string name="finish_reg">Закончить регистрацию</string>
     <string name="sign_out_alert">Вы действительно хотите выйти с приложения?</string>
+    <string name="reg_success">Регистрация прошла успешно</string>
+    <string name="successfully_signed_in">Успешно вошли в систему</string>
 </resources>
