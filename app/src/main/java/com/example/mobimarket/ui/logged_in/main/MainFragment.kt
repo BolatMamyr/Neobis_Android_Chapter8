@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mobimarket.databinding.FragmentMainBinding
-import com.example.mobimarket.models.ProductImage
-import com.example.mobimarket.models.ProductMini
+import com.example.mobimarket.models.product.ProductImage
+import com.example.mobimarket.models.product.ProductMini
 import com.example.mobimarket.ui.logged_in.product.rv.ItemDecorator
 import com.example.mobimarket.ui.logged_in.product.rv.ProductsAdapter
 

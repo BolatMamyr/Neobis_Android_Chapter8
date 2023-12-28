@@ -11,6 +11,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,11 +24,24 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getRetrofit(): Api {
+    fun getRetrofit(userManager: UserManager): Api {
         val gson = GsonBuilder().setLenient().create()
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val token = userManager.accessToken
+
+        // Interceptor для добавления токена авторизации
+        val interceptor = Interceptor { chain ->
+            val newRequest =
+                chain.request().newBuilder().addHeader("Authorization", "Bearer $token").build()
+            chain.proceed(newRequest)
+        }
+
+        // Interceptor для логирования
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(loggingInterceptor).build()
 
         return Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -38,7 +52,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getSharedPrefs(@ApplicationContext context: Context) =
+    fun getSharedPrefs(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences("MobiMarketSharedPrefs", Context.MODE_PRIVATE)
 
     @Provides

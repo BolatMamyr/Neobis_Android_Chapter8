@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobimarket.databinding.ItemProductBinding
-import com.example.mobimarket.models.ProductMini
+import com.example.mobimarket.models.product.ProductMini
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsViewHolder>() {
 

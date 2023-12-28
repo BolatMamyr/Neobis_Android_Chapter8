@@ -1,4 +1,4 @@
-package com.example.mobimarket.ui.reg
+package com.example.mobimarket.ui.viewmodel.reg
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentSignInBinding
 import com.example.mobimarket.managers.UserManager
-import com.example.mobimarket.models.ApiState
+import com.example.mobimarket.models.api.ApiState
 import com.example.mobimarket.models.reg.SignInRequestBody
 import com.example.mobimarket.util.enable
 import com.example.mobimarket.util.navigate
@@ -82,8 +82,8 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn() {
-        val username = binding.etUsername.text.toString()
-        val password = binding.pvPassword.getText()
+        val username = binding.etUsername.text.toString().trim()
+        val password = binding.pvPassword.getText().trim()
         val body = SignInRequestBody(username = username, password = password)
         viewModel.signIn(body)
     }
@@ -97,9 +97,6 @@ class SignInFragment : Fragment() {
                         showProgressBar(false)
                         showSuccessMessage(getString(R.string.successfully_signed_in))
 
-                        // todo:
-                        // NullPointerException: Attempt to invoke virtual method 'java.lang.String com.example.mobimarket.models.reg.SignInResponse.getAccessToken()' on a null object reference
-                        // at com.example.mobimarket.ui.reg.SignInFragment$collectSignInState$1$1.invokeSuspend(SignInFragment.kt:103)
                         val accessToken = it.data.accessToken ?: ""
                         val refreshToken = it.data.refreshToken ?: ""
 

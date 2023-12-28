@@ -1,4 +1,4 @@
-package com.example.mobimarket.models
+package com.example.mobimarket.models.api
 
 sealed class ApiState<out T> {
 

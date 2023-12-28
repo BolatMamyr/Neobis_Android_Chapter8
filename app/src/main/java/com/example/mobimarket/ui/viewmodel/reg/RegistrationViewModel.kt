@@ -1,10 +1,10 @@
-package com.example.mobimarket.ui.reg
+package com.example.mobimarket.ui.viewmodel.reg
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobimarket.models.api.ApiState
 import com.example.mobimarket.models.reg.RegisterRequestBody
-import com.example.mobimarket.models.ApiState
 import com.example.mobimarket.models.reg.SignInRequestBody
 import com.example.mobimarket.models.reg.SignInResponse
 import com.example.mobimarket.repo.AuthRepository

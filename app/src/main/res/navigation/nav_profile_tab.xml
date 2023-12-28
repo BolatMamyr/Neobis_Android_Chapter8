@@ -56,6 +56,8 @@
         <action
             android:id="@+id/action_enterPhoneFragment_to_enterSmsFragment"
             app:destination="@id/enterSmsFragment" />
+        <argument android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/enterSmsFragment"

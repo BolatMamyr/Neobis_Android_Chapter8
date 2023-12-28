@@ -1,6 +1,7 @@
 package com.example.mobimarket.ui.logged_in.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,18 +14,23 @@ import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentEditProfileBinding
 import com.example.mobimarket.util.navigate
 import com.example.mobimarket.util.navigateUp
+import com.example.mobimarket.util.showErrorMessage
+
+const val TAG = "EditProfileFragment"
 
 class EditProfileFragment : Fragment() {
 
     private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
 
+    private var image = ""
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             try {
                 binding.ivAvatar.setImageURI(uri)
+                image = uri?.toString() ?: ""
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e(TAG, "galleryLauncher: $e")
             }
         }
 
@@ -55,7 +61,15 @@ class EditProfileFragment : Fragment() {
             galleryLauncher.launch("image/*")
         }
         binding.containerAddNumber.setOnClickListener {
-            navigate(R.id.action_editProfileFragment_to_enterPhoneFragment)
+            val username = binding.etEditUsername.text.toString()
+            if (username.isEmpty()) {
+                binding.etEditUsername.requestFocus()
+                showErrorMessage(getString(R.string.please_enter_username_to_proceed))
+            } else {
+                val action =
+                    EditProfileFragmentDirections.actionEditProfileFragmentToEnterPhoneFragment(username)
+                navigate(action)
+            }
         }
 
         binding.tbEditProfile.btnMenuText.setOnClickListener {

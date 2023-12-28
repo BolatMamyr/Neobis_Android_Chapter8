@@ -9,8 +9,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentMyProdsBinding
-import com.example.mobimarket.models.ProductImage
-import com.example.mobimarket.models.ProductMini
+import com.example.mobimarket.models.product.ProductImage
+import com.example.mobimarket.models.product.ProductMini
 import com.example.mobimarket.ui.logged_in.product.rv.ItemDecorator
 import com.example.mobimarket.ui.logged_in.product.rv.ProductsAdapter
 import com.example.mobimarket.util.navigateUp

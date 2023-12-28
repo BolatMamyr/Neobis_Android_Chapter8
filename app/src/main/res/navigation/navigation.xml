@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.mobimarket.ui.reg.SignInFragment"
+        android:name="com.example.mobimarket.ui.viewmodel.reg.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -85,6 +85,12 @@
             app:argType="string" />
         <argument android:name="password"
             app:argType="string" />
+        <action
+            android:id="@+id/action_repeatPasswordFragment_to_loggedInHostFragment"
+            app:destination="@id/loggedInHostFragment"
+            app:popUpTo="@id/repeatPasswordFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"/>
     </fragment>
 
     <fragment

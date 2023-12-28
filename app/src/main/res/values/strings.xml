@@ -53,4 +53,7 @@
     <string name="sign_out_alert">Вы действительно хотите выйти с приложения?</string>
     <string name="reg_success">Регистрация прошла успешно</string>
     <string name="successfully_signed_in">Успешно вошли в систему</string>
+    <string name="please_fill_all_the_required_fields">Пожалуиста, заполните все необходимые поля</string>
+    <string name="product_added">Товар добавлен</string>
+    <string name="please_enter_username_to_proceed">Пожалуиста, введите имя пользователя, чтобы продолжить</string>
 </resources>

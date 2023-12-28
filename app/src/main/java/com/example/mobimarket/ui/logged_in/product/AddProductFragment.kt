@@ -7,17 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentAddProductBinding
+import com.example.mobimarket.models.api.ApiState
+import com.example.mobimarket.models.product.AddProductRequestBody
 import com.example.mobimarket.ui.logged_in.product.rv.AddImageAdapter
 import com.example.mobimarket.util.navigateUp
 import com.example.mobimarket.util.showAlert
+import com.example.mobimarket.util.showErrorMessage
+import com.example.mobimarket.util.showSuccessMessage
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class AddProductFragment : Fragment() {
 
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel by viewModels<AddProductViewModel>()
 
     private val addImageAdapter = AddImageAdapter()
 
@@ -40,6 +52,7 @@ class AddProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpToolbar()
         setRv()
+        collectAddProductState()
     }
 
     override fun onDestroyView() {
@@ -88,7 +101,47 @@ class AddProductFragment : Fragment() {
     }
 
     private fun createProduct() {
-        // todo
+        val images = addImageAdapter.getList()
+        // todo: make max price not to go beyond integer max size
+        val price = binding.etPrice.text.toString()
+        val name = binding.etName.text.toString()
+        val overview = binding.etOverview.text.toString()
+        val desc = binding.etDesc.text.toString()
+
+        if (images.isEmpty() || price.isEmpty() || name.isEmpty() || overview.isEmpty() || desc.isEmpty()) {
+            showErrorMessage(getString(R.string.please_fill_all_the_required_fields))
+            return
+        }
+
+        val body = AddProductRequestBody(
+            name = name,
+            shortDescription = overview,
+            fullDescription = desc,
+            price = price.toInt()
+        )
+        viewModel.addProduct(body)
     }
 
+    private fun collectAddProductState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.addProductState.collectLatest {
+                when (it) {
+                    ApiState.Loading -> showProgressBar(true)
+                    is ApiState.Success -> {
+                        showSuccessMessage(getString(R.string.product_added))
+                        navigateUp()
+                    }
+                    is ApiState.Error -> {
+                        showProgressBar(false)
+                        showErrorMessage(it.error.message)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showProgressBar(value: Boolean) {
+        binding.pbAddProd.isVisible = value
+        binding.tbAddProd.btnMenuText.isEnabled = !value
+    }
 }

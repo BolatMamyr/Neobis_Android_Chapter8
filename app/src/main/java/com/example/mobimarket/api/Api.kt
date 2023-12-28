@@ -1,5 +1,6 @@
 package com.example.mobimarket.api
 
+import com.example.mobimarket.models.product.AddProductRequestBody
 import com.example.mobimarket.models.reg.RegisterRequestBody
 import com.example.mobimarket.models.reg.SignInRequestBody
 import okhttp3.ResponseBody
@@ -18,4 +19,12 @@ interface Api {
     suspend fun signIn(
         @Body body: SignInRequestBody
     ): Response<ResponseBody>
+
+    @POST("api/v1/auth/addProduct")
+    suspend fun addProduct(
+        @Body body: AddProductRequestBody
+    ): Response<ResponseBody>
+
+
+
 }

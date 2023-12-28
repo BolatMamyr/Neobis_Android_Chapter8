@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.ItemProductBinding
-import com.example.mobimarket.models.ProductMini
+import com.example.mobimarket.models.product.ProductMini
 
 class ProductsViewHolder(val binding: ItemProductBinding) :
     RecyclerView.ViewHolder(binding.root) {

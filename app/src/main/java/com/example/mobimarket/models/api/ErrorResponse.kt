@@ -1,4 +1,4 @@
-package com.example.mobimarket.models
+package com.example.mobimarket.models.api
 
 data class ErrorResponse(
     val exceptionName: String,

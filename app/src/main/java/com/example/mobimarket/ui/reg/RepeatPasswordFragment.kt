@@ -16,10 +16,12 @@ import androidx.navigation.fragment.navArgs
 import com.example.mobimarket.R
 import com.example.mobimarket.databinding.FragmentRepeatPasswordBinding
 import com.example.mobimarket.models.reg.RegisterRequestBody
-import com.example.mobimarket.models.ApiState
+import com.example.mobimarket.models.api.ApiState
+import com.example.mobimarket.ui.viewmodel.reg.RegistrationViewModel
 import com.example.mobimarket.util.Constants
 import com.example.mobimarket.util.Exceptions
 import com.example.mobimarket.util.enable
+import com.example.mobimarket.util.navigate
 import com.example.mobimarket.util.navigateUp
 import com.example.mobimarket.util.showErrorMessage
 import com.example.mobimarket.util.showSuccessMessage
@@ -145,7 +147,7 @@ class RepeatPasswordFragment : Fragment() {
                     is ApiState.Success -> {
                         showSuccessMessage(getString(R.string.reg_success))
                         delay(Constants.LENGTH_SHORT)
-                        findNavController().popBackStack(R.id.signInFragment, false)
+                        navigate(R.id.action_repeatPasswordFragment_to_loggedInHostFragment)
                     }
                 }
             }

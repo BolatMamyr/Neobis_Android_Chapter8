@@ -1,4 +1,4 @@
-package com.example.mobimarket.models
+package com.example.mobimarket.models.product
 
 data class ProductMini(
     val id: Int,

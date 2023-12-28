@@ -10,11 +10,12 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.mobimarket.R
-import com.example.mobimarket.models.ErrorResponse
+import com.example.mobimarket.models.api.ErrorResponse
 import com.example.mobimarket.ui.other.MyAlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -54,7 +55,7 @@ fun Fragment.showErrorMessage(text: String) {
         val snackbarLayout = this.view as Snackbar.SnackbarLayout
         snackbarLayout.addView(errorView)
 
-        val layoutParams = view.layoutParams as FrameLayout.LayoutParams
+        val layoutParams = view.layoutParams as CoordinatorLayout.LayoutParams
         layoutParams.gravity = Gravity.TOP
         view.layoutParams = layoutParams
         show()
@@ -88,8 +89,7 @@ fun Fragment.toast(msg: String) = Toast.makeText(requireContext(), msg, Toast.LE
 inline fun <reified T> Response<ResponseBody>.getSuccessResult(): T {
     val gson = Gson()
     try {
-        val res = gson.fromJson(gson.toJson(body()), T::class.java)
-        return res
+        return gson.fromJson(body()!!.string(), T::class.java)
     } catch (e: Exception) {
         Log.e("Extensions", "getSuccessResult: $e")
     }

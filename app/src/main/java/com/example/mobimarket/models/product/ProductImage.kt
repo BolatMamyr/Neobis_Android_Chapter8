@@ -1,4 +1,4 @@
-package com.example.mobimarket.models
+package com.example.mobimarket.models.product
 
 data class ProductImage(
     val id: Int,
